@@ -1,0 +1,34 @@
+{
+  "name": "@jsxiangfu/react-native-template",
+  "version": "2.0.1",
+  "description": "👾React Native 初始化项目模板",
+  "repository": "https://github.com/jswangtao/react-native-template.git",
+  "author": "相甫 <jstangtao@gmail.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "commit": "npx git-cz",
+    "release:major": "npx release-it major",
+    "release:minor": "npx release-it minor",
+    "release:patch": "npx release-it patch"
+  },
+  "files": [
+    "template",
+    "template.config.js"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    }
+  }
+}

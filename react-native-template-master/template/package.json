@@ -1,0 +1,116 @@
+{
+  "name": "ProjectName",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "yarn run android:dev",
+    "android:production": "react-native run-android --mode 'productionDebug'",
+    "android:dev": "react-native run-android --mode 'devDebug' --appIdSuffix 'dev'",
+    "android:test": "react-native run-android --mode 'qaDebug' --appIdSuffix 'test'",
+    "android:demo": "react-native run-android --mode 'demoDebug' --appIdSuffix 'demo'",
+    "ios": "react-native run-ios --scheme 'ProjectNameDev'",
+    "ios:test": "react-native run-ios --scheme 'ProjectNameTest'",
+    "ios:demo": "react-native run-ios --scheme 'ProjectNameDemo'",
+    "ios:prod": "react-native run-ios --scheme 'ProjectNameProduction'",
+    "start": "react-native start",
+    "start:clean": "react-native start --reset-cache",
+    "lint:ts": "tsc --noEmit && eslint src --ext .ts,.tsx",
+    "lint:gql:generated": "eslint src/graphql/operations --ext .ts --fix",
+    "prettier": "prettier --write 'src/**/*.{js,json,yml,yaml,ts,tsx,md}'",
+    "prettier:gql:generated": "prettier --write 'src/graphql/operations/**/*.generated.{js,json,yml,yaml,ts,tsx,md}'",
+    "ncu": "npx npm-check-updates -u -x typescript,react,react-native,@types/react-native,jcore-react-native,jpush-react-native,axios,metro-react-native-babel-preset",
+    "commit": "npx git-cz",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged --allow-empty",
+    "cc": "rimraf node_modules/.cache/babel-loader/*,",
+    "build:android": "cd android && fastlane prod",
+    "build:android:test": "cd android && fastlane test",
+    "build:android:demo": "cd android && fastlane demo",
+    "build:ios": "cd ios && fastlane prod",
+    "build:ios:test": "cd ios && fastlane test",
+    "build:ios:demo": "cd ios && fastlane demo",
+    "deploy:android": "cd android && fastlane ver",
+    "deploy:ios": "cd ios && fastlane ver",
+    "gen": "fruits-chain-gc http://192.168.10.233:9406/graphql",
+    "gen:w": "fruits-chain-gc http://192.168.10.233:9406/graphql -w",
+    "bootsplash:gen": "react-native generate-bootsplash assets/bootsplash_logo_original.png --background-color=FFFFFF --logo-width=100 --assets-path=assets --flavor=main"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.17",
+    "@fruits-chain/design-tokens-bailu": "^0.0.7",
+    "@fruits-chain/icons-react-native": "^0.1.5",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.18",
+    "@react-native-async-storage/async-storage": "1.19.0",
+    "@react-navigation/bottom-tabs": "6.5.8",
+    "@react-navigation/native": "6.1.7",
+    "@react-navigation/stack": "6.3.17",
+    "ahooks": "^3.7.8",
+    "axios": "0.27.2",
+    "dayjs": "^1.11.10",
+    "graphql": "^16.7.1",
+    "lodash": "^4.17.21",
+    "rc-field-form": "^1.41.0",
+    "react": "18.2.0",
+    "react-native": "0.72.10",
+    "react-native-bootsplash": "4.7.5",
+    "react-native-config": "1.5.1",
+    "react-native-exception-handler": "2.10.10",
+    "react-native-extended-stylesheet": "0.12.0",
+    "react-native-gesture-handler": "2.12.0",
+    "react-native-keyboard-aware-scroll-view": "0.9.5",
+    "react-native-safe-area-context": "4.7.1",
+    "react-native-screens": "3.22.1",
+    "react-native-svg": "13.10.0",
+    "react-native-version-number": "0.3.6",
+    "rn-placeholder": "3.0.3",
+    "rn-update-version": "0.3.0",
+    "zustand": "4.3.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.8",
+    "@babel/preset-env": "^7.22.7",
+    "@babel/runtime": "^7.22.6",
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@fruits-chain/eslint-config-rn": "^0.3.16",
+    "@fruits-chain/graphql-codegen-preset": "^0.3.3",
+    "@fruits-chain/prettier-config-preset": "^0.0.3",
+    "@react-native/metro-config": "^0.72.11",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.14",
+    "babel-plugin-import": "^1.13.8",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "metro-react-native-babel-preset": "0.76.8",
+    "typescript": "~5.2.0"
+  },
+  "resolutions": {
+    "@types/react": "^18",
+    "prettier": "^3.1.0"
+  },
+  "lint-staged": {
+    "*.{yml,yaml,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "bash -c tsc --noEmit",
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
